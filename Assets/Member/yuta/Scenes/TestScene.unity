@@ -228,7 +228,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -40784380, guid: c742e5dde833f2f44bd06af9142f8def, type: 3}
+  m_Sprite: {fileID: 2015542743, guid: eaa6017166ddc514b9de1e96df82d623, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -320,14 +320,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9387804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce0ab45f660b4504b9fb649867fda491, type: 3}
+  m_Script: {fileID: 11500000, guid: 59744ead6ab487142b3f26a136f16118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Eye_Right: {fileID: 1144647734}
   Eye_Left: {fileID: 1508669961}
   Eye_Right_A: {fileID: 1609960926}
   Eye_Left_A: {fileID: 1897591200}
-  Bullet: {fileID: 7189503876156326667, guid: 9dc644a371bfa8c4dac0a5bb0f21cc1f, type: 3}
+  Bullet: {fileID: 7189503876156326667, guid: cd5f8e9543426ec46a6a75923a69a52b, type: 3}
   BulletPoint: {fileID: 1153066079}
   P_Animator: {fileID: 9387806}
   JumpPower: 550
@@ -672,12 +672,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 63bb6680d71eac04ab1e3cc3220f10a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2087c85b0e7afc4eb49a6d87e173324, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.36, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -756,12 +756,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bfc0958407502254aaa85810bb08702e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2087c85b0e7afc4eb49a6d87e173324, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.36, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -841,12 +841,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec7ac7fd7e5564f4cad6948373e2a55b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efed90c4376494d4184866affeaa061b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -977,12 +977,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 63bb6680d71eac04ab1e3cc3220f10a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a2087c85b0e7afc4eb49a6d87e173324, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.36, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1062,12 +1062,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 36f3aefa243181d4a84a91849ed1e87a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd78241dc8723e144a2ec6d3c7a97ef3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1137,17 +1137,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1609960926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2143e1a091c02084ebd43f8ccfd465ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 505e8ce708d1fde47aeb2d50e76cdbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerC: {fileID: 9387810}
   EyeBrows: {fileID: 1492843348}
   EyePictures:
-  - {fileID: 21300000, guid: ec7ac7fd7e5564f4cad6948373e2a55b, type: 3}
-  - {fileID: 21300000, guid: 36f3aefa243181d4a84a91849ed1e87a, type: 3}
-  - {fileID: 21300000, guid: 758af6b40d65d564f937ae996ae1e476, type: 3}
-  - {fileID: 21300000, guid: 3fda69ce124f6534ebf0627c32708585, type: 3}
-  - {fileID: 21300000, guid: bfc0958407502254aaa85810bb08702e, type: 3}
+  - {fileID: 21300000, guid: efed90c4376494d4184866affeaa061b, type: 3}
+  - {fileID: 21300000, guid: fd78241dc8723e144a2ec6d3c7a97ef3, type: 3}
+  - {fileID: 21300000, guid: 5fea0f15af97d9245b16032cb7a4f46a, type: 3}
+  - {fileID: 21300000, guid: 9ffcf53e872fb0b439d83601eb3ba5ca, type: 3}
+  - {fileID: 21300000, guid: d5aaca6b61397f04286416f72150c400, type: 3}
   Eye_Sprite: {fileID: 1144647736}
   Eye_Anime: {fileID: 1144647737}
   eye: 0
@@ -1192,12 +1192,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec7ac7fd7e5564f4cad6948373e2a55b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efed90c4376494d4184866affeaa061b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1246,17 +1246,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1897591200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2143e1a091c02084ebd43f8ccfd465ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 505e8ce708d1fde47aeb2d50e76cdbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerC: {fileID: 9387810}
   EyeBrows: {fileID: 838463598}
   EyePictures:
-  - {fileID: 21300000, guid: ec7ac7fd7e5564f4cad6948373e2a55b, type: 3}
-  - {fileID: 21300000, guid: 36f3aefa243181d4a84a91849ed1e87a, type: 3}
-  - {fileID: 21300000, guid: 758af6b40d65d564f937ae996ae1e476, type: 3}
-  - {fileID: 21300000, guid: 3fda69ce124f6534ebf0627c32708585, type: 3}
-  - {fileID: 21300000, guid: bfc0958407502254aaa85810bb08702e, type: 3}
+  - {fileID: 21300000, guid: efed90c4376494d4184866affeaa061b, type: 3}
+  - {fileID: 21300000, guid: fd78241dc8723e144a2ec6d3c7a97ef3, type: 3}
+  - {fileID: 21300000, guid: 5fea0f15af97d9245b16032cb7a4f46a, type: 3}
+  - {fileID: 21300000, guid: 9ffcf53e872fb0b439d83601eb3ba5ca, type: 3}
+  - {fileID: 21300000, guid: d5aaca6b61397f04286416f72150c400, type: 3}
   Eye_Sprite: {fileID: 1508669963}
   Eye_Anime: {fileID: 1508669964}
   eye: 1
@@ -1301,12 +1301,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 36f3aefa243181d4a84a91849ed1e87a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd78241dc8723e144a2ec6d3c7a97ef3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
