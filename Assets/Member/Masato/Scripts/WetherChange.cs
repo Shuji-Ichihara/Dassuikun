@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static WetherList;
@@ -7,7 +7,7 @@ public class WetherChange : MonoBehaviour
 {
     private WeatherState currentWeather;
     [SerializeField]
-    private float changeInterval; // “VŒó‚ğ•Ï‚¦‚éŠÔŠui•bj
+    private float changeInterval; // å¤©å€™ã‚’å¤‰ãˆã‚‹é–“éš”ï¼ˆç§’ï¼‰
     private float changeTimer;
 
     void Start()
@@ -28,10 +28,10 @@ public class WetherChange : MonoBehaviour
 
     void ChangeWeather()
     {
-        // ƒ‰ƒ“ƒ_ƒ€‚É“VŒó‚ğ‘I‘ğ
+        // ãƒ©ãƒ³ãƒ€ãƒ ã«å¤©å€™ã‚’é¸æŠ
         currentWeather = (WeatherState)Random.Range(0, 3);
 
-        // “VŒó‚É‰‚¶‚½ˆ—‚ğÀs
+        // å¤©å€™ã«å¿œã˜ãŸå‡¦ç†ã‚’å®Ÿè¡Œ
         switch (currentWeather)
         {
             case WeatherState.Sunny:
@@ -49,18 +49,18 @@ public class WetherChange : MonoBehaviour
     void SetSunny()
     {
         Debug.Log("Weather changed to Sunny.");
-        // °‚ê‚Ì‚Æ‚«‚Ìˆ—‚ğ‚±‚±‚É‘‚­
+        // æ™´ã‚Œã®ã¨ãã®å‡¦ç†ã‚’ã“ã“ã«æ›¸ã
     }
 
     void SetCloudy()
     {
         Debug.Log("Weather changed to Cloudy.");
-        // “Ü‚è‚Ì‚Æ‚«‚Ìˆ—‚ğ‚±‚±‚É‘‚­
+        // æ›‡ã‚Šã®ã¨ãã®å‡¦ç†ã‚’ã“ã“ã«æ›¸ã
     }
 
     void SetRainy()
     {
         Debug.Log("Weather changed to Rainy.");
-        // ‰J‚Ì‚Æ‚«‚Ìˆ—‚ğ‚±‚±‚É‘‚­
+        // é›¨ã®ã¨ãã®å‡¦ç†ã‚’ã“ã“ã«æ›¸ã
     }
 }
