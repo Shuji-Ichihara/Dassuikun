@@ -5,7 +5,7 @@ using static WetherList;
 
 public class WetherChange : MonoBehaviour
 {
-    private WeatherState currentWeather;
+    public WeatherState currentWeather;
     [SerializeField]
     private float changeInterval; // 天候を変える間隔（秒）
     private float changeTimer;
