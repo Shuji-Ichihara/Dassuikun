@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0e193e5500cd247afde5c66856d11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWeather: 0
   changeInterval: 10
 --- !u!4 &477743091
 Transform:
