@@ -21,19 +21,22 @@ public class RandomSpown : MonoBehaviour
 
     void Start()
     {
-        TrySpawnEntities(enemies);
-        TrySpawnEntities(items);
+        TrySpawnEntities();
     }
 
-    void TrySpawnEntities(List<Spawnable> spawnables)
+    void TrySpawnEntities()
     {
-        foreach (var spawnable in spawnables)
+        List<Spawnable> allSpawnables = new List<Spawnable>();
+        allSpawnables.AddRange(enemies);
+        allSpawnables.AddRange (items);
+        foreach (var spawnable in allSpawnables)
         {
             if (Random.value <= spawnable.spawnChance)
             {
                 Vector3 spawnPosition = GetRandomPositionWithinRadius(spawnable.spawnRadius);
                 GameObject spawanedObject = Instantiate (spawnable.prefab, spawnPosition, Quaternion.identity);
                 spawanedObject.transform.parent = parentTransform; //親オブジェクトを設定
+                break;
             }
         }
     }
