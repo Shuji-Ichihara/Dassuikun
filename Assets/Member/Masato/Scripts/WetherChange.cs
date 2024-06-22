@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static WetherList;
 
 public class WetherChange : MonoBehaviour
@@ -9,6 +10,10 @@ public class WetherChange : MonoBehaviour
     [SerializeField]
     private float changeInterval; // 天候を変える間隔（秒）
     private float changeTimer;
+    [SerializeField]
+    private Image wetherImage;
+    [SerializeField]
+    private Sprite[] wetherSprites;
 
     void Start()
     {
@@ -50,17 +55,20 @@ public class WetherChange : MonoBehaviour
     {
         Debug.Log("Weather changed to Sunny.");
         // 晴れのときの処理をここに書く
+        wetherImage.sprite = wetherSprites[0];
     }
 
     void SetCloudy()
     {
         Debug.Log("Weather changed to Cloudy.");
         // 曇りのときの処理をここに書く
+        wetherImage.sprite = wetherSprites[1];
     }
 
     void SetRainy()
     {
         Debug.Log("Weather changed to Rainy.");
         // 雨のときの処理をここに書く
+        wetherImage.sprite = wetherSprites[2];
     }
 }
