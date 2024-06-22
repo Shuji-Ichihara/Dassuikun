@@ -75,13 +75,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ea4f4dc47ef5a214895e88f6f8e7134c, type: 3}
+  m_SortingOrder: 10
+  m_Sprite: {fileID: 21300000, guid: fefa5b4da8ad5154bad9504ed4de3744, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 0.86}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -96,9 +96,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7189503876156326667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7617391f2296904384df6d3bb702dee, type: 3}
+  m_Script: {fileID: 11500000, guid: 05cc831d2ca336441bcf87a00ab54cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Slime_Pictures:
+  - {fileID: 21300000, guid: fefa5b4da8ad5154bad9504ed4de3744, type: 3}
+  - {fileID: 21300000, guid: 07e7b3a7b3ce8214f84d45bdb51d9395, type: 3}
+  - {fileID: 21300000, guid: 4e43f29621268de4999789a358420cdb, type: 3}
   Speed: 20
 --- !u!61 &145875950588435775
 BoxCollider2D:
@@ -137,7 +141,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.56, y: 0.86}
-    newSize: {x: 2.56, y: 0.86}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
