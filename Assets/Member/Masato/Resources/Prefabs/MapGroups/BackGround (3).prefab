@@ -183,14 +183,9 @@ MonoBehaviour:
   - prefab: {fileID: 0}
     spawnRadius: 0
     spawnChance: 0
-  items:
-  - prefab: {fileID: 1550507100973484332, guid: 5803b180acbbe4c438245409f29e843c, type: 3}
-    spawnRadius: 1
-    spawnChance: 5
-  - prefab: {fileID: 2425642491018755073, guid: fc3046c391b9c254ea9a377e27dfd9bf, type: 3}
-    spawnRadius: 1
-    spawnChance: 5
-  parentTransform: {fileID: 8930155094074064952}
+  items: []
+  parentTransform: {fileID: 2037227138811760225}
+  spawnOrigin: {fileID: 8930155094074064952}
 --- !u!1 &8012189177806111258
 GameObject:
   m_ObjectHideFlags: 0
