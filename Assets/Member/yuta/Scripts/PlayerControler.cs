@@ -1,7 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
+
+//0.001
+//0.165　限界
+
 
 public class PlayerControler : MonoBehaviour
 {
+    [SerializeField] Water_Gauge water_Gauge;
+
+    [SerializeField] List<Sprite> Slime_Pictures;
     [SerializeField] GameObject Eye_Right;
     [SerializeField] GameObject Eye_Left;
     [SerializeField] GameObject Eye_Right_A;
@@ -10,12 +19,12 @@ public class PlayerControler : MonoBehaviour
     [SerializeField] Transform BulletPoint;
     [SerializeField] Animator P_Animator;
 
-    public float JumpPower;             //ジャンプ力
+    //public float JumpPower;             //ジャンプ力
 
     private Rigidbody2D rbody;          //プレイヤー制御用Rigidbody2D
+    private SpriteRenderer slime_Sprite;
 
-    private float timeLimit;
-    private bool finish;
+    private float changeTime;
     private bool action;
 
     //ゲーム状態定義
@@ -30,12 +39,23 @@ public class PlayerControler : MonoBehaviour
 
     public SLIME_MODE gameMode = SLIME_MODE.RUN; //ゲーム状態
 
+    public enum SLIME_TYPE
+    {
+        NOMAL,
+        COLA,
+        ENEGRY,
+    }
+
+    public SLIME_TYPE type = SLIME_TYPE.NOMAL;
+
     // Start is called before the first frame update
     void Start()
     {
-        transform.localScale = Vector2.one;
+        slime_Sprite = GetComponent<SpriteRenderer>();
+        slime_Sprite.sprite = Slime_Pictures[0];
+
+        Slime_Size(1);
         SlimeEye_Posi(1);
-        finish = false;
         action = false;
 
         rbody = GetComponent<Rigidbody2D>();
@@ -50,6 +70,7 @@ public class PlayerControler : MonoBehaviour
             {
                 P_Animator.SetTrigger("Jump");
                 gameMode = SLIME_MODE.JUMP;
+                water_Gauge.Lose();
                 action = true;
             }
 
@@ -58,36 +79,60 @@ public class PlayerControler : MonoBehaviour
                 P_Animator.SetTrigger("Attack");
                 gameMode = SLIME_MODE.ATTACK;
                 Instantiate(Bullet, BulletPoint.position, Quaternion.identity);
+                water_Gauge.Lose();
                 action = true;
             }
 
             if (gameMode == SLIME_MODE.RUN)
             {
-                timeLimit += Time.deltaTime;
-                if (timeLimit > 1f && !finish)
-                {
-                    transform.localScale = new Vector2(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f);
-                    SlimeEye_Posi(1);
-                    timeLimit = 0;
-                }
-
-                //0.5までジャンプ可能
-                //0.4
-                if (transform.localScale.x <= 0.5f)
-                {
-                    finish = true;
-                    //gameMode = SLIME_MODE.DEATH;
-                    Debug.Log("ガ目オペラ");
-                }
-
                 if(transform.localScale.x <= 0.4f && !action)
                 {
-                    //finish = true;
                     P_Animator.SetTrigger("Death");
+                    type = SLIME_TYPE.NOMAL;
                     gameMode = SLIME_MODE.DEATH;
                 }
             }
         }
+        
+        if(type == SLIME_TYPE.ENEGRY || type == SLIME_TYPE.COLA)
+        {
+            changeTime += Time.deltaTime;
+            if (changeTime > 10f)
+            {
+                type = SLIME_TYPE.NOMAL;
+            }
+        }
+    }
+
+    //スライムサイズ
+    public void Slime_Size(int i)
+    {
+        switch(i)
+        {
+            case 1:
+                transform.localScale = new Vector2(1f, 1f);
+                break;
+            case 2:
+                transform.localScale = new Vector2(0.9f, 0.9f);
+                break;
+            case 3:
+                transform.localScale = new Vector2(0.8f, 0.8f);
+                break;
+            case 4:
+                transform.localScale = new Vector2(0.7f, 0.7f);
+                break;
+            case 5:
+                transform.localScale = new Vector2(0.6f, 0.6f);
+                break;
+            case 6:
+                transform.localScale = new Vector2(0.5f, 0.5f);
+                break;
+            case 7:
+                transform.localScale = new Vector2(0.4f, 0.4f);
+                break;
+        }
+
+        SlimeEye_Posi(1);
     }
 
     //スライムの目
@@ -171,18 +216,41 @@ public class PlayerControler : MonoBehaviour
 
             //ジャンプ１
             case 2:
-                Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y - 0.065f);
+                if (transform.localScale.x > 0.9f)
+                {
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y - 0.15f);
+                }
+                if (transform.localScale.x <= 0.9f && transform.localScale.x > 0.8f)
+                {
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y - 0.095f);
+                }
+                else if (transform.localScale.x <= 0.8f && transform.localScale.x > 0.7f)
+                {
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y - 0.09f);
+                }
+                else if (transform.localScale.x <= 0.7f && transform.localScale.x > 0.6f)
+                {
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y - 0.09f);
+                }
+                else if (transform.localScale.x <= 0.6f && transform.localScale.x > 0.5f)
+                {
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y - 0.088f);
+                }
+                else if (transform.localScale.x <= 0.5f)
+                {
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y - 0.088f);
+                }
                 break;
 
             //ジャンプ２
             case 3:
                 if(transform.localScale.x > 0.9f)
                 {
-                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 1.15f);
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 1.25f);
                 }
                 if(transform.localScale.x <= 0.9f && transform.localScale.x > 0.8f)
                 {
-                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 1.05f);
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 1.125f);
                 }
                 else if(transform.localScale.x <= 0.8f && transform.localScale.x > 0.7f)
                 {
@@ -190,15 +258,14 @@ public class PlayerControler : MonoBehaviour
                 }
                 else if(transform.localScale.x <= 0.7f && transform.localScale.x > 0.6f)
                 {
-                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.81f);
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.89f);
                 }
                 else if(transform.localScale.x <= 0.6f && transform.localScale.x > 0.5f)
                 {
-                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.71f);
+                    Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.73f);
                 }
                 else if(transform.localScale.x <= 0.5f)
                 {
-                    Debug.Log("チェック");
                     Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.62f);
                 }
                 break;
@@ -207,23 +274,20 @@ public class PlayerControler : MonoBehaviour
 
     public void SlimeJump()
     {
-        rbody.AddForce(Vector2.up * JumpPower);
+        if(type == SLIME_TYPE.ENEGRY)
+        {
+            rbody.gravityScale = 0.7f;
+            rbody.AddForce(Vector2.up * 550);
+        }
+        else
+        {
+            rbody.gravityScale = 2f;
+            rbody.AddForce(Vector2.up * 700);
+        }
         SlimeEye_Posi(3);
     }
 
-    public void Jump_Finish()
-    {
-        action = false;
-        gameMode = SLIME_MODE.RUN;
-    }
-
-    public void Attack_Finish()
-    {
-        action = false;
-        gameMode = SLIME_MODE.RUN;
-    }
-
-    public void Damage_Finish()
+    public void Action_Finish()
     {
         action = false;
         gameMode = SLIME_MODE.RUN;
@@ -232,15 +296,137 @@ public class PlayerControler : MonoBehaviour
     //当たり判定用
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Cactus")
         {
             return;
         }
+
+        //アイテムの当たり判定
+        if(collision.gameObject.tag == "COLA")
+        {
+            changeTime = 0;
+            type = SLIME_TYPE.COLA;
+            water_Gauge.Recovery();
+        }
+        else if(collision.gameObject.tag == "ENEGRY")
+        {
+            changeTime = 0;
+            type = SLIME_TYPE.ENEGRY;
+            water_Gauge.Recovery();
+        }
+        else
+        {
+            gameMode = SLIME_MODE.DAMAGE;
+            water_Gauge.Lose();
+            P_Animator.SetTrigger("Damage");
+            action = true;
+        }
         Destroy(collision.gameObject);
-        gameMode = SLIME_MODE.DAMAGE;
-        transform.localScale = new Vector2(transform.localScale.x - 0.1f, transform.localScale.y - 0.1f);
-        SlimeEye_Posi(1);
-        P_Animator.SetTrigger("Damage");
-        action = true;
+    }
+
+    //姿変更
+    public void Slime_ChangeType(int i)
+    {
+        slime_Sprite = GetComponent<SpriteRenderer>();
+        switch (i)
+        {
+            //歩き1＆ジャンプ3＆攻撃＆死亡
+            case 1:
+                if(type == SLIME_TYPE.NOMAL)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[0];
+                }
+                else if(type == SLIME_TYPE.COLA)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[3];
+                }
+                else
+                {
+                    if (gameMode == SLIME_MODE.ATTACK)
+                    {
+                        slime_Sprite.sprite = Slime_Pictures[9];
+                    }
+                    else
+                    {
+                        slime_Sprite.sprite = Slime_Pictures[6];
+                    }
+                }
+                break;
+            //歩き2
+            case 2:
+                if (type == SLIME_TYPE.NOMAL)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[1];
+                }
+                else if (type == SLIME_TYPE.COLA)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[4];
+                }
+                else
+                {
+                    slime_Sprite.sprite = Slime_Pictures[7];
+                }
+                break;
+            //歩き3
+            case 3:
+                if (type == SLIME_TYPE.NOMAL)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[2];
+                }
+                else if (type == SLIME_TYPE.COLA)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[5];
+                }
+                else
+                {
+                    slime_Sprite.sprite = Slime_Pictures[8];
+                }
+                break;
+            //ジャンプ1
+            case 4:
+                if (type == SLIME_TYPE.NOMAL)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[10];
+                }
+                else if (type == SLIME_TYPE.COLA)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[12];
+                }
+                else
+                {
+                    slime_Sprite.sprite = Slime_Pictures[14];
+                }
+                break;
+            //ジャンプ2
+            case 5:
+                if (type == SLIME_TYPE.NOMAL)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[11];
+                }
+                else if (type == SLIME_TYPE.COLA)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[13];
+                }
+                else
+                {
+                    slime_Sprite.sprite = Slime_Pictures[15];
+                }
+                break;
+            //ダメージ
+            case 6:
+                if (type == SLIME_TYPE.NOMAL)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[16];
+                }
+                else if (type == SLIME_TYPE.COLA)
+                {
+                    slime_Sprite.sprite = Slime_Pictures[17];
+                }
+                else
+                {
+                    slime_Sprite.sprite = Slime_Pictures[18];
+                }
+                break;
+        }
     }
 }
