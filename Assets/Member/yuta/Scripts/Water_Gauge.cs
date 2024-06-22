@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Water_Gauge : MonoBehaviour
 {
+    [SerializeField] WetherChange WetherChange;
     [SerializeField] PlayerControler PlayerC;
     [SerializeField] Image Water_drop;
     [SerializeField] List<Sprite> Gauge_Pictures;
@@ -52,7 +53,21 @@ public class Water_Gauge : MonoBehaviour
             time += Time.deltaTime;
             if (time > 1)
             {
-                TimeGage.fillAmount -= 0.0334f;
+                if(WetherChange.currentWeather == WetherList.WeatherState.Sunny)
+                {
+                    Debug.Log("ê¨å˜2");
+                    TimeGage.fillAmount -= 0.0668f;
+                }
+                else if(WetherChange.currentWeather == WetherList.WeatherState.Cloudy)
+                {
+                    Debug.Log("ê¨å˜1");
+                    TimeGage.fillAmount -= 0.0334f;
+                }
+                else
+                {
+                    Debug.Log("ê¨å˜3");
+                    TimeGage.fillAmount += 0.0334f;
+                }
                 time = 0;
             }
 
