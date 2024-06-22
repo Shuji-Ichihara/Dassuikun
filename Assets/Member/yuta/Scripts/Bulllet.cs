@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+
 public class Bulllet : MonoBehaviour
 {
     [SerializeField] List<Sprite> Slime_Pictures;

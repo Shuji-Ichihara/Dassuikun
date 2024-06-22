@@ -1,10 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
-
-//0.001
-//0.165Å@å¿äE
-
 
 public class PlayerControler : MonoBehaviour
 {
