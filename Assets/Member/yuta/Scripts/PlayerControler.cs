@@ -291,32 +291,39 @@ public class PlayerControler : MonoBehaviour
     //当たり判定用
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Bullet" || collision.gameObject.tag == "Cactus")
+        if(gameMode != SLIME_MODE.DEATH)
         {
-            return;
-        }
+            if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Bullet")
+            {
+                return;
+            }
 
-        //アイテムの当たり判定
-        if(collision.gameObject.tag == "COLA")
-        {
-            changeTime = 0;
-            type = SLIME_TYPE.COLA;
-            water_Gauge.Recovery();
+            //アイテムの当たり判定
+            if (collision.gameObject.tag == "COLA")
+            {
+                changeTime = 0;
+                type = SLIME_TYPE.COLA;
+                water_Gauge.Recovery();
+            }
+            else if (collision.gameObject.tag == "ENEGRY")
+            {
+                changeTime = 0;
+                type = SLIME_TYPE.ENEGRY;
+                water_Gauge.Recovery();
+            }
+            else if (collision.gameObject.tag == "Cactus")
+            {
+
+            }
+            else
+            {
+                gameMode = SLIME_MODE.DAMAGE;
+                water_Gauge.Lose();
+                P_Animator.SetTrigger("Damage");
+                action = true;
+            }
+            Destroy(collision.gameObject);
         }
-        else if(collision.gameObject.tag == "ENEGRY")
-        {
-            changeTime = 0;
-            type = SLIME_TYPE.ENEGRY;
-            water_Gauge.Recovery();
-        }
-        else
-        {
-            gameMode = SLIME_MODE.DAMAGE;
-            water_Gauge.Lose();
-            P_Animator.SetTrigger("Damage");
-            action = true;
-        }
-        Destroy(collision.gameObject);
     }
 
     //姿変更

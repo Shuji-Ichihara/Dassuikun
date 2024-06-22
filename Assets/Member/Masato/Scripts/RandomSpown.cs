@@ -11,24 +11,32 @@ public class Spawnable
 }
 public class RandomSpown : MonoBehaviour
 {
+
     public List<Spawnable> enemies;  // エネミーの設定リスト
     public List<Spawnable> items;    // アイテムの設定リスト
-    public Transform parentTransform; // 背景の親オブジェクト
+    [SerializeField]
+    private Transform parentTransform; // 背景の親オブジェクト
+    [SerializeField]
+    private Transform spawnOrigin;
 
     void Start()
     {
-        TrySpawnEntities(enemies);
-        TrySpawnEntities(items);
+        TrySpawnEntities();
     }
 
-    void TrySpawnEntities(List<Spawnable> spawnables)
+    void TrySpawnEntities()
     {
-        foreach (var spawnable in spawnables)
+        List<Spawnable> allSpawnables = new List<Spawnable>();
+        allSpawnables.AddRange(enemies);
+        allSpawnables.AddRange (items);
+        foreach (var spawnable in allSpawnables)
         {
             if (Random.value <= spawnable.spawnChance)
             {
                 Vector3 spawnPosition = GetRandomPositionWithinRadius(spawnable.spawnRadius);
-                Instantiate(spawnable.prefab, spawnPosition, Quaternion.identity);
+                GameObject spawanedObject = Instantiate (spawnable.prefab, spawnPosition, Quaternion.identity);
+                spawanedObject.transform.parent = parentTransform; //親オブジェクトを設定
+                break;
             }
         }
     }
@@ -36,6 +44,6 @@ public class RandomSpown : MonoBehaviour
     Vector3 GetRandomPositionWithinRadius(float radius)
     {
         Vector2 randomCircle = Random.insideUnitCircle * radius;
-        return new Vector3(randomCircle.x, 0, randomCircle.y);
+        return spawnOrigin.position + new Vector3(randomCircle.x, 0, randomCircle.y);
     }
 }
