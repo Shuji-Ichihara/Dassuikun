@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &223963535694129786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5427378540041112664}
+  - component: {fileID: 725780979609314678}
+  m_Layer: 0
+  m_Name: SpownTwo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5427378540041112664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223963535694129786}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.01, y: -0.378, z: 0}
+  m_LocalScale: {x: 0.05555556, y: 0.1, z: 0.19913575}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 332136852641750895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &725780979609314678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223963535694129786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6ab543d7db1d743976cb1a5dd47050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - prefab: {fileID: 2828931240267550796, guid: bb2103fa86c38904297667ef41c09c38, type: 3}
+    spawnRadius: 1
+    spawnChance: 3
+  - prefab: {fileID: 80310353381054769, guid: b7a41d7b2018010448af9071b8daa388, type: 3}
+    spawnRadius: 1
+    spawnChance: 3
+  items:
+  - prefab: {fileID: 2425642491018755073, guid: fc3046c391b9c254ea9a377e27dfd9bf, type: 3}
+    spawnRadius: 1
+    spawnChance: 3
+  - prefab: {fileID: 1550507100973484332, guid: 5803b180acbbe4c438245409f29e843c, type: 3}
+    spawnRadius: 1
+    spawnChance: 3
+  parentTransform: {fileID: 332136852641750895}
+  spawnOrigin: {fileID: 5427378540041112664}
 --- !u!1 &1937735361930080351
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   items: []
-  parentTransform: {fileID: 0}
+  parentTransform: {fileID: 332136852641750895}
+  spawnOrigin: {fileID: 2269254567527390561}
 --- !u!1 &2567081094375779888
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,19 +253,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - prefab: {fileID: 2828931240267550796, guid: bb2103fa86c38904297667ef41c09c38, type: 3}
-    spawnRadius: 10.06
-    spawnChance: 5
-  - prefab: {fileID: 0}
-    spawnRadius: 0
-    spawnChance: 0
+    spawnRadius: 1
+    spawnChance: 3
+  - prefab: {fileID: 80310353381054769, guid: b7a41d7b2018010448af9071b8daa388, type: 3}
+    spawnRadius: 1
+    spawnChance: 3
   items:
-  - prefab: {fileID: 1550507100973484332, guid: 5803b180acbbe4c438245409f29e843c, type: 3}
-    spawnRadius: 10.76
-    spawnChance: 5
   - prefab: {fileID: 2425642491018755073, guid: fc3046c391b9c254ea9a377e27dfd9bf, type: 3}
-    spawnRadius: 2.35
-    spawnChance: 5
-  parentTransform: {fileID: 2269254567527390561}
+    spawnRadius: 1
+    spawnChance: 3
+  - prefab: {fileID: 1550507100973484332, guid: 5803b180acbbe4c438245409f29e843c, type: 3}
+    spawnRadius: 1
+    spawnChance: 3
+  parentTransform: {fileID: 332136852641750895}
+  spawnOrigin: {fileID: 2269254567527390561}
 --- !u!1 &7984885462465995485
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +278,7 @@ GameObject:
   - component: {fileID: 332136852641750895}
   - component: {fileID: 4621249094919199426}
   m_Layer: 0
-  m_Name: BackGround
+  m_Name: Map1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,6 +298,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2269254567527390561}
+  - {fileID: 5427378540041112664}
   - {fileID: 4840451707113715843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -281,7 +344,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.9248903, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

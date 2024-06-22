@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2938503187757242941}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.114, y: -0.378, z: 0}
+  m_LocalPosition: {x: 0.044, y: -0.378, z: 0}
   m_LocalScale: {x: 0.05555556, y: 0.1, z: 0.19913575}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,18 +47,19 @@ MonoBehaviour:
   enemies:
   - prefab: {fileID: 2828931240267550796, guid: bb2103fa86c38904297667ef41c09c38, type: 3}
     spawnRadius: 1
-    spawnChance: 5
-  - prefab: {fileID: 0}
-    spawnRadius: 0
-    spawnChance: 0
-  items:
-  - prefab: {fileID: 1550507100973484332, guid: 5803b180acbbe4c438245409f29e843c, type: 3}
+    spawnChance: 3
+  - prefab: {fileID: 80310353381054769, guid: b7a41d7b2018010448af9071b8daa388, type: 3}
     spawnRadius: 1
-    spawnChance: 5
+    spawnChance: 3
+  items:
   - prefab: {fileID: 2425642491018755073, guid: fc3046c391b9c254ea9a377e27dfd9bf, type: 3}
     spawnRadius: 1
-    spawnChance: 5
-  parentTransform: {fileID: 7154472442878829923}
+    spawnChance: 3
+  - prefab: {fileID: 1550507100973484332, guid: 5803b180acbbe4c438245409f29e843c, type: 3}
+    spawnRadius: 1
+    spawnChance: 3
+  parentTransform: {fileID: 1575707955305923479}
+  spawnOrigin: {fileID: 7154472442878829923}
 --- !u!1 &3136887780521891939
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +72,7 @@ GameObject:
   - component: {fileID: 1842690779269318801}
   - component: {fileID: 2763836958037033665}
   m_Layer: 0
-  m_Name: BackGround (1)
+  m_Name: Map2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
