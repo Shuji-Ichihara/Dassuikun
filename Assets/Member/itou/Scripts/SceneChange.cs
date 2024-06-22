@@ -9,6 +9,7 @@ public class SceneChange : MonoBehaviour
     GameObject ManageObject;
     FadeScene fadeSceneManager;
     public bool Happyend;
+    int ChangeClick;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class SceneChange : MonoBehaviour
         ManageObject = GameObject.Find("SceneChangeObject");
         //オブジェクトの中のSceneFadeManagerを取得
         fadeSceneManager = ManageObject.GetComponent<FadeScene>();
+        ChangeClick = 0;
     }
 
     // Update is called once per frame
@@ -23,8 +25,9 @@ public class SceneChange : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "GameScene")
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.Space) && ChangeClick == 0)
             {
+                ChangeClick++;
                 //SceneFadeManagerがアタッチされているオブジェクトを取得
                 ManageObject = GameObject.Find("SceneChangeObject");
                 //オブジェクトの中のSceneFadeManagerを取得
@@ -34,8 +37,9 @@ public class SceneChange : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q) && ChangeClick == 0)
             {
+                ChangeClick++;
                 SceneChanges();
             }
         }
