@@ -522,7 +522,7 @@ Transform:
   m_GameObject: {fileID: 58192789}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -3.47, z: 0}
+  m_LocalPosition: {x: -1.4, y: 1.67, z: 0}
   m_LocalScale: {x: 0.24778724, y: 0.24778724, z: 0.24778724}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2200,6 +2200,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWeather: 0
   changeInterval: 5
+  wetherImage: {fileID: 1165861047}
+  wetherSprites:
+  - {fileID: 21300000, guid: 3212f2ab4ae057347aa24b090697ffad, type: 3}
+  - {fileID: 21300000, guid: 3da7cf8670481d84c8446046c81a381b, type: 3}
+  - {fileID: 21300000, guid: 3b0a9a420105ad9418fad1e5a3522bdf, type: 3}
 --- !u!4 &1530802490
 Transform:
   m_ObjectHideFlags: 0
@@ -2949,7 +2954,7 @@ Transform:
   m_GameObject: {fileID: 2109715816}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.49, y: 2.41, z: 0}
+  m_LocalPosition: {x: -1.86, y: -2.77, z: 0}
   m_LocalScale: {x: 0.5584, y: 0.5584, z: 0.5584}
   m_ConstrainProportionsScale: 0
   m_Children: []
