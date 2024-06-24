@@ -46,17 +46,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - prefab: {fileID: 2828931240267550796, guid: bb2103fa86c38904297667ef41c09c38, type: 3}
-    spawnRadius: 0.5
+    spawnRadius: 1
     spawnChance: 1
   - prefab: {fileID: 80310353381054769, guid: b7a41d7b2018010448af9071b8daa388, type: 3}
-    spawnRadius: 0.5
+    spawnRadius: 1
     spawnChance: 5
   items:
   - prefab: {fileID: 2425642491018755073, guid: fc3046c391b9c254ea9a377e27dfd9bf, type: 3}
-    spawnRadius: 0.5
+    spawnRadius: 1
     spawnChance: 5
   - prefab: {fileID: 1550507100973484332, guid: 5803b180acbbe4c438245409f29e843c, type: 3}
-    spawnRadius: 0.5
+    spawnRadius: 1
     spawnChance: 3
   parentTransform: {fileID: 6685103839334240420}
   spawnOrigin: {fileID: 3919749356110844260}
@@ -157,7 +157,6 @@ GameObject:
   - component: {fileID: 2893473709321532266}
   - component: {fileID: 5289532630047880770}
   - component: {fileID: 8366996261487441615}
-  - component: {fileID: 726505019522290193}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -277,19 +276,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &726505019522290193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3943911252364483024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6ab543d7db1d743976cb1a5dd47050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies: []
-  items: []
-  parentTransform: {fileID: 6685103839334240420}
-  spawnOrigin: {fileID: 3919749356110844260}
