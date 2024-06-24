@@ -1,40 +1,40 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapScroll : MonoBehaviour
 {
-    public GameObject[] backgroundPrefabs; // ”wŒiƒ}ƒbƒv‚ÌPrefab”z—ñ
+    public GameObject[] backgroundPrefabs; // èƒŒæ™¯ãƒãƒƒãƒ—ã®Prefabé…åˆ—
     [SerializeField]
-    private int initialBackgroundCount; // Å‰‚É”z’u‚·‚é”wŒiƒ}ƒbƒv‚Ì”
+    private int initialBackgroundCount; // æœ€åˆã«é…ç½®ã™ã‚‹èƒŒæ™¯ãƒãƒƒãƒ—ã®æ•°
     [SerializeField]
-    private float scrollSpeed; // ƒXƒNƒ[ƒ‹‘¬“x
-    private List<GameObject> activeBackgrounds = new List<GameObject>(); // Œ»İƒAƒNƒeƒBƒu‚È”wŒiƒ}ƒbƒv
+    private float scrollSpeed; // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«é€Ÿåº¦
+    private List<GameObject> activeBackgrounds = new List<GameObject>(); // ç¾åœ¨ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªèƒŒæ™¯ãƒãƒƒãƒ—
     private float backgroundWidth;
 
     void Start()
     {
         backgroundWidth = backgroundPrefabs[0].GetComponent<SpriteRenderer>().bounds.size.x;
 
-        // Å‰‚É”wŒiƒ}ƒbƒv‚ğ”z’u
+        // æœ€åˆã«èƒŒæ™¯ãƒãƒƒãƒ—ã‚’é…ç½®
         for (int i = 0; i < initialBackgroundCount; i++)
         {
             Vector3 spawnPosition = new Vector3(i * backgroundWidth, 0, 0);
             GameObject background = Instantiate(RandomBackground(), spawnPosition, Quaternion.identity);
-            background.transform.parent = transform; // ”wŒiƒ}ƒbƒv‚ğeƒIƒuƒWƒFƒNƒg‚Ìq‚É‚·‚é
+            background.transform.parent = transform; // èƒŒæ™¯ãƒãƒƒãƒ—ã‚’è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å­ã«ã™ã‚‹
             activeBackgrounds.Add(background);
         }
     }
 
     void Update()
     {
-        // ”wŒiƒ}ƒbƒv‚ğƒXƒNƒ[ƒ‹
+        // èƒŒæ™¯ãƒãƒƒãƒ—ã‚’ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
         foreach (GameObject background in activeBackgrounds)
         {
             background.transform.Translate(Vector3.left * scrollSpeed * Time.deltaTime);
         }
 
-        // ”wŒiƒ}ƒbƒv‚ÌÄ”z’u
+        // èƒŒæ™¯ãƒãƒƒãƒ—ã®å†é…ç½®
         if (activeBackgrounds[0].transform.position.x < -backgroundWidth)
         {
             GameObject firstBackground = activeBackgrounds[0];
@@ -43,12 +43,12 @@ public class MapScroll : MonoBehaviour
 
             Vector3 spawnPosition = new Vector3(activeBackgrounds[activeBackgrounds.Count - 1].transform.position.x + backgroundWidth, 0, 0);
             GameObject newBackground = Instantiate(RandomBackground(), spawnPosition, Quaternion.identity);
-            newBackground.transform.parent = transform; // ”wŒiƒ}ƒbƒv‚ğeƒIƒuƒWƒFƒNƒg‚Ìq‚É‚·‚é
+            newBackground.transform.parent = transform; // èƒŒæ™¯ãƒãƒƒãƒ—ã‚’è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å­ã«ã™ã‚‹
             activeBackgrounds.Add(newBackground);
         }
     }
 
-    // ƒ‰ƒ“ƒ_ƒ€‚È”wŒiƒ}ƒbƒv‚ğæ“¾‚·‚éƒƒ\ƒbƒh
+    // ãƒ©ãƒ³ãƒ€ãƒ ãªèƒŒæ™¯ãƒãƒƒãƒ—ã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
     private GameObject RandomBackground()
     {
         int randomIndex = Random.Range(0, backgroundPrefabs.Length);
