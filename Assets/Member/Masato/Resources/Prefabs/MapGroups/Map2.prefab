@@ -47,17 +47,17 @@ MonoBehaviour:
   enemies:
   - prefab: {fileID: 2828931240267550796, guid: bb2103fa86c38904297667ef41c09c38, type: 3}
     spawnRadius: 1
-    spawnChance: 1
+    spawnChance: 3
   - prefab: {fileID: 80310353381054769, guid: b7a41d7b2018010448af9071b8daa388, type: 3}
     spawnRadius: 1
-    spawnChance: 5
+    spawnChance: 3
   items:
   - prefab: {fileID: 2425642491018755073, guid: fc3046c391b9c254ea9a377e27dfd9bf, type: 3}
     spawnRadius: 1
-    spawnChance: 1
+    spawnChance: 2
   - prefab: {fileID: 1550507100973484332, guid: 5803b180acbbe4c438245409f29e843c, type: 3}
     spawnRadius: 0.3
-    spawnChance: 5
+    spawnChance: 2
   parentTransform: {fileID: 6685103839334240420}
   spawnOrigin: {fileID: 3919749356110844260}
 --- !u!1 &2365495769420641515
