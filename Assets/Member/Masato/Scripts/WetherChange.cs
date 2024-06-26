@@ -13,12 +13,17 @@ public class WetherChange : MonoBehaviour
     [SerializeField]
     private Image wetherImage;
     [SerializeField]
+    private Image sunImage;
+    [SerializeField]
     private Sprite[] wetherSprites;
+    [SerializeField]
+    private ParticleSystem particleSystem;
 
     void Start()
     {
         changeTimer = changeInterval;
         ChangeWeather();
+        particleSystem.Stop();
     }
 
     void Update()
@@ -56,6 +61,8 @@ public class WetherChange : MonoBehaviour
         Debug.Log("Weather changed to Sunny.");
         // 晴れのときの処理をここに書く
         wetherImage.sprite = wetherSprites[0];
+        sunImage.enabled = true;
+        particleSystem.Stop();
     }
 
     void SetCloudy()
@@ -63,6 +70,8 @@ public class WetherChange : MonoBehaviour
         Debug.Log("Weather changed to Cloudy.");
         // 曇りのときの処理をここに書く
         wetherImage.sprite = wetherSprites[1];
+        sunImage.enabled = false;
+        particleSystem.Stop();
     }
 
     void SetRainy()
@@ -70,5 +79,7 @@ public class WetherChange : MonoBehaviour
         Debug.Log("Weather changed to Rainy.");
         // 雨のときの処理をここに書く
         wetherImage.sprite = wetherSprites[2];
+        sunImage.enabled = false;
+        particleSystem.Play();
     }
 }
