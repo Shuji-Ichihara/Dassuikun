@@ -60,7 +60,11 @@ public class Bulllet : MonoBehaviour
             return;
         }
 
-        if(collision.gameObject.tag == "Rock" || collision.gameObject.tag == "Cactus")
+        if(collision.gameObject.tag == "COLA" || collision.gameObject.tag == "ENEGRY")
+        {
+            StartCoroutine("BulletDestroy");
+        }
+        else if(collision.gameObject.tag == "Rock" || collision.gameObject.tag == "Cactus")
         {
             if(collision.gameObject.tag == "Cactus")
             {
