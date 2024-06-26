@@ -395,6 +395,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ff7d125b75ec7dc46b541b6c831208dc, type: 3}
   - {fileID: 21300000, guid: b447ab4e396799a48a7967b89c07f95c, type: 3}
   particleSystem: {fileID: 2061342778}
+  layerToSet: 0
 --- !u!4 &477743091
 Transform:
   m_ObjectHideFlags: 0
@@ -1486,7 +1487,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: -40
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1558994913
 RectTransform:
@@ -2177,7 +2178,7 @@ Transform:
   m_GameObject: {fileID: 1986853188}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.34, y: -3.67, z: 0}
+  m_LocalPosition: {x: -6.34, y: -4.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2314,7 +2315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3586446946573387861, guid: fb913984425e2c84482d9560c3ddbe59, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6204250134772814614, guid: fb913984425e2c84482d9560c3ddbe59, type: 3}
       propertyPath: m_LocalPosition.x
