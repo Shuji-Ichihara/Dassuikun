@@ -55,20 +55,20 @@ public class WetherChange : MonoBehaviour
     {
         Debug.Log("Weather changed to Sunny.");
         // 晴れのときの処理をここに書く
-        //wetherImage.sprite = wetherSprites[0];
+        wetherImage.sprite = wetherSprites[0];
     }
 
     void SetCloudy()
     {
         Debug.Log("Weather changed to Cloudy.");
         // 曇りのときの処理をここに書く
-        //wetherImage.sprite = wetherSprites[1];
+        wetherImage.sprite = wetherSprites[1];
     }
 
     void SetRainy()
     {
         Debug.Log("Weather changed to Rainy.");
         // 雨のときの処理をここに書く
-        //wetherImage.sprite = wetherSprites[2];
+        wetherImage.sprite = wetherSprites[2];
     }
 }
