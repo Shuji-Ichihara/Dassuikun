@@ -60,7 +60,7 @@ public class GameUIManager : SingletonMonoBehaviour<GameUIManager>
 
     private void Update()
     {
-        //_holdItemView.sprite = PreviewHoldItem();
+        _holdItemView.sprite = PreviewHoldItem();
     }
 
     private Sprite PreviewHoldItem()
