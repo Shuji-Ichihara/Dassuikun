@@ -29,6 +29,9 @@ public class EyeControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameUIManager.Instance.IsPauseMenu)
+            return;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (eye == Eye.RIGHT)
         {
@@ -109,6 +112,6 @@ public class EyeControler : MonoBehaviour
                     break;
             }
         }
-            
+
     }
 }

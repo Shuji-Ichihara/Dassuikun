@@ -28,6 +28,8 @@ public class WetherChange : MonoBehaviour
 
     void Update()
     {
+        if (GameUIManager.Instance.IsPauseMenu)
+            return;
         changeTimer -= Time.deltaTime;
         if (changeTimer <= 0f)
         {

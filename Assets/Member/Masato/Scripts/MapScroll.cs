@@ -28,6 +28,9 @@ public class MapScroll : MonoBehaviour
 
     void Update()
     {
+        if (GameUIManager.Instance.IsPauseMenu)
+            return;
+
         // 背景マップをスクロール
         foreach (GameObject background in activeBackgrounds)
         {

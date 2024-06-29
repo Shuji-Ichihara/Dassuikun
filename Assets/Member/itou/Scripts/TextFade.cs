@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TextFade : MonoBehaviour
 {
     [SerializeField]
-    private Image image;
+    private TextMeshProUGUI tmpUgui;
     void Start()
     {
         StartCoroutine("Transparent");
@@ -16,7 +17,7 @@ public class TextFade : MonoBehaviour
     {
         for (int i = 0; i < 255; i++)
         {
-            image.color = image.color - new Color32(0, 0, 0, 1);
+            tmpUgui.color = tmpUgui.color - new Color32(0, 0, 0, 1);
             yield return new WaitForSeconds(0.01f);
         }
         StartCoroutine("Transparents");
@@ -25,7 +26,7 @@ public class TextFade : MonoBehaviour
     {
         for (int i = 0; i < 255; i++)
         {
-            image.color = image.color + new Color32(0, 0, 0, 1);
+            tmpUgui.color = tmpUgui.color + new Color32(0, 0, 0, 1);
             yield return new WaitForSeconds(0.01f);
         }
         StartCoroutine("Transparent");

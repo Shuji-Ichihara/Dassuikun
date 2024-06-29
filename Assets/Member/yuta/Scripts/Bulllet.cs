@@ -24,11 +24,11 @@ public class Bulllet : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
         playerC = player.GetComponent<PlayerControler>();
-        if(playerC.type == PlayerControler.SLIME_TYPE.NOMAL)
+        if (playerC.type == PlayerControler.SLIME_TYPE.NOMAL)
         {
             spriteRenderer.sprite = Slime_Pictures[0];
         }
-        else if(playerC.type == PlayerControler.SLIME_TYPE.COLA)
+        else if (playerC.type == PlayerControler.SLIME_TYPE.COLA)
         {
             spriteRenderer.sprite = Slime_Pictures[1];
         }
@@ -43,7 +43,7 @@ public class Bulllet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x >= 10.83f)
+        if (transform.position.x >= 10.83f)
         {
             StartCoroutine("BulletDestroy");
         }
@@ -60,14 +60,16 @@ public class Bulllet : MonoBehaviour
             return;
         }
 
-        if(collision.gameObject.tag == "COLA" || collision.gameObject.tag == "ENEGRY")
+        if (collision.gameObject.tag == "COLA" || collision.gameObject.tag == "ENEGRY")
         {
             StartCoroutine("BulletDestroy");
         }
-        else if(collision.gameObject.tag == "Rock" || collision.gameObject.tag == "Cactus")
+        else if (collision.gameObject.tag == "Rock" || collision.gameObject.tag == "Cactus")
         {
-            if(collision.gameObject.tag == "Cactus")
+            if (collision.gameObject.tag == "Cactus")
             {
+
+                AudioManager.Instance.PlaySE(SEType.BreakObject_02);
                 cactus = GameObject.FindGameObjectWithTag("Cactus");
                 water_Gauge = GameObject.FindGameObjectWithTag("Gauge");
                 water_Gauge.GetComponent<Water_Gauge>().Recovery();
@@ -77,6 +79,7 @@ public class Bulllet : MonoBehaviour
             {
                 if (playerC.type == PlayerControler.SLIME_TYPE.COLA)
                 {
+                    AudioManager.Instance.PlaySE(SEType.BreakObject_01);
                     Destroy(collision.gameObject);
                 }
             }
@@ -84,6 +87,7 @@ public class Bulllet : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlaySE(SEType.BreakObject_01);
             Destroy(collision.gameObject);
             StartCoroutine("BulletDestroy");
         }

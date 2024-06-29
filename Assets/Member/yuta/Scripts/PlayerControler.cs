@@ -25,11 +25,11 @@ public class PlayerControler : MonoBehaviour
     //ゲーム状態定義
     public enum SLIME_MODE
     {
-        RUN,                         
-        JUMP,                        
-        ATTACK,                      
-        DAMAGE,                      
-        DEATH,                       
+        RUN,
+        JUMP,
+        ATTACK,
+        DAMAGE,
+        DEATH,
     }
 
     public SLIME_MODE gameMode = SLIME_MODE.RUN; //ゲーム状態
@@ -54,15 +54,20 @@ public class PlayerControler : MonoBehaviour
         action = false;
 
         rbody = GetComponent<Rigidbody2D>();
+        AudioManager.Instance.PlayLoopSE(SEType.Dassui_Run);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameMode != SLIME_MODE.DEATH)
+        if (GameUIManager.Instance.IsPauseMenu == true)
+            return;
+
+        if (gameMode != SLIME_MODE.DEATH)
         {
             if (Input.GetKey(KeyCode.Space) && !action)
             {
+                AudioManager.Instance.PlaySE(SEType.Dassui_Jump);
                 P_Animator.SetTrigger("Jump");
                 gameMode = SLIME_MODE.JUMP;
                 water_Gauge.Lose();
@@ -71,6 +76,7 @@ public class PlayerControler : MonoBehaviour
 
             if (Input.GetKey(KeyCode.A) && !action)
             {
+                AudioManager.Instance.PlaySE(SEType.Dassui_Attack);
                 P_Animator.SetTrigger("Attack");
                 gameMode = SLIME_MODE.ATTACK;
                 Instantiate(Bullet, BulletPoint.position, Quaternion.identity);
@@ -80,16 +86,18 @@ public class PlayerControler : MonoBehaviour
 
             if (gameMode == SLIME_MODE.RUN)
             {
-                if(transform.localScale.x <= 0.4f && !action)
+
+                if (transform.localScale.x <= 0.4f && !action)
                 {
+                    AudioManager.Instance.PauseLoopSE();
                     P_Animator.SetTrigger("Death");
                     type = SLIME_TYPE.NOMAL;
                     gameMode = SLIME_MODE.DEATH;
                 }
             }
         }
-        
-        if(type == SLIME_TYPE.ENEGRY || type == SLIME_TYPE.COLA)
+
+        if (type == SLIME_TYPE.ENEGRY || type == SLIME_TYPE.COLA)
         {
             changeTime += Time.deltaTime;
             if (changeTime > 10f)
@@ -102,7 +110,7 @@ public class PlayerControler : MonoBehaviour
     //スライムサイズ
     public void Slime_Size(int i)
     {
-        switch(i)
+        switch (i)
         {
             case 1:
                 transform.localScale = new Vector2(1f, 1f);
@@ -239,27 +247,27 @@ public class PlayerControler : MonoBehaviour
 
             //ジャンプ２
             case 3:
-                if(transform.localScale.x > 0.9f)
+                if (transform.localScale.x > 0.9f)
                 {
                     Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 1.25f);
                 }
-                if(transform.localScale.x <= 0.9f && transform.localScale.x > 0.8f)
+                if (transform.localScale.x <= 0.9f && transform.localScale.x > 0.8f)
                 {
                     Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 1.125f);
                 }
-                else if(transform.localScale.x <= 0.8f && transform.localScale.x > 0.7f)
+                else if (transform.localScale.x <= 0.8f && transform.localScale.x > 0.7f)
                 {
                     Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.95f);
                 }
-                else if(transform.localScale.x <= 0.7f && transform.localScale.x > 0.6f)
+                else if (transform.localScale.x <= 0.7f && transform.localScale.x > 0.6f)
                 {
                     Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.89f);
                 }
-                else if(transform.localScale.x <= 0.6f && transform.localScale.x > 0.5f)
+                else if (transform.localScale.x <= 0.6f && transform.localScale.x > 0.5f)
                 {
                     Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.73f);
                 }
-                else if(transform.localScale.x <= 0.5f)
+                else if (transform.localScale.x <= 0.5f)
                 {
                     Eye_Left_A.transform.position = new Vector2(Eye_Left_A.transform.position.x, Eye_Left_A.transform.position.y + 0.62f);
                 }
@@ -269,7 +277,7 @@ public class PlayerControler : MonoBehaviour
 
     public void SlimeJump()
     {
-        if(type == SLIME_TYPE.ENEGRY)
+        if (type == SLIME_TYPE.ENEGRY)
         {
             rbody.gravityScale = 0.7f;
             rbody.AddForce(Vector2.up * 550);
@@ -291,7 +299,7 @@ public class PlayerControler : MonoBehaviour
     //当たり判定用
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(gameMode != SLIME_MODE.DEATH)
+        if (gameMode != SLIME_MODE.DEATH)
         {
             if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Bullet")
             {
@@ -301,12 +309,14 @@ public class PlayerControler : MonoBehaviour
             //アイテムの当たり判定
             if (collision.gameObject.tag == "COLA")
             {
+                AudioManager.Instance.PlaySE(SEType.ChangeDassui);
                 changeTime = 0;
                 type = SLIME_TYPE.COLA;
                 water_Gauge.Recovery();
             }
             else if (collision.gameObject.tag == "ENEGRY")
             {
+                AudioManager.Instance.PlaySE(SEType.ChangeDassui);
                 changeTime = 0;
                 type = SLIME_TYPE.ENEGRY;
                 water_Gauge.Recovery();
@@ -317,6 +327,7 @@ public class PlayerControler : MonoBehaviour
             }
             else
             {
+                AudioManager.Instance.PlaySE(SEType.Damage);
                 gameMode = SLIME_MODE.DAMAGE;
                 water_Gauge.Lose();
                 P_Animator.SetTrigger("Damage");
@@ -334,11 +345,11 @@ public class PlayerControler : MonoBehaviour
         {
             //歩き1＆ジャンプ3＆攻撃＆死亡
             case 1:
-                if(type == SLIME_TYPE.NOMAL)
+                if (type == SLIME_TYPE.NOMAL)
                 {
                     slime_Sprite.sprite = Slime_Pictures[0];
                 }
-                else if(type == SLIME_TYPE.COLA)
+                else if (type == SLIME_TYPE.COLA)
                 {
                     slime_Sprite.sprite = Slime_Pictures[3];
                 }

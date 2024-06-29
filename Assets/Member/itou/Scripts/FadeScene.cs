@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
 [DisallowMultipleComponent]
 public class FadeScene : MonoBehaviour
@@ -20,9 +21,12 @@ public class FadeScene : MonoBehaviour
     //シーン遷移のための型
     string afterScene;
     public int Destorycount;
+
+    private Canvas canvas;
     void Start()
     {
         DontDestroyOnLoad(this);
+        canvas = GetComponent<Canvas>();
         SetRGBA(0, 0, 0, 1);
         //シーン遷移が完了した際にフェードインを開始するように設定
         SceneManager.sceneLoaded += fadeInStart;
@@ -48,8 +52,12 @@ public class FadeScene : MonoBehaviour
         afterScene = nextScene;
     }
     // Update is called once per frame
-    void Update()
+    async void Update()
     {
+        // 追記
+        if(canvas.worldCamera == null)
+            canvas.worldCamera = Camera.main;
+
         if (Destorycount == 1)
         {
             if (SceneManager.GetActiveScene().name == "Title")
@@ -75,7 +83,8 @@ public class FadeScene : MonoBehaviour
             if (alfa >= 1)
             {
                 FadeOut = false;
-                SceneManager.LoadScene(afterScene);
+                await SceneManager.LoadSceneAsync(afterScene);
+                //SceneManager.LoadScene(afterScene);
             }
         }
     }

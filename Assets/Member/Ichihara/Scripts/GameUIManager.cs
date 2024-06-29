@@ -52,6 +52,7 @@ public class GameUIManager : SingletonMonoBehaviour<GameUIManager>
                    .Subscribe(
                    delegate
                    {
+                       AudioManager.Instance.PlaySE(SEType.PressButton);
                        _gameMenu.MenuActivation();
                        SetIsActivateMenu(true);
                    })

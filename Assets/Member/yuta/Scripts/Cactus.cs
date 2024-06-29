@@ -14,6 +14,8 @@ public class Cactus : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         spriteRenderer.sprite = Cactus_Cat;
+        // ŽsŒ´’Ç‹L
+        spriteRenderer.sortingOrder = -1;
         boxCollider2D.enabled = false;
     }
 }

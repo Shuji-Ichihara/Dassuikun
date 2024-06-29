@@ -46,12 +46,22 @@ public class GameMenuView : MonoBehaviour
         // 操作説明画面を表示
         _guideButton.OnClickAsObservable()
                     .ThrottleFirst(System.TimeSpan.FromMilliseconds(1000))
-                    .Subscribe(_ => _guideView.GuideViewActivation())
+                    .Subscribe(
+                     delegate
+                     {
+                         AudioManager.Instance.PlaySE(SEType.PressButton);
+                         _guideView.GuideViewActivation();
+                     })
                     .AddTo(this);
         // 中断画面を表示
         _interruptionButton.OnClickAsObservable()
                            .ThrottleFirst(System.TimeSpan.FromMilliseconds(1000))
-                           .Subscribe(_ => _interruptionView.InterruptionViewActivation())
+                           .Subscribe(
+                            delegate
+                            {
+                                AudioManager.Instance.PlaySE(SEType.PressButton);
+                                _interruptionView.InterruptionViewActivation();
+                            })
                            .AddTo(this);
 
         // ゲーム画面に戻る
@@ -60,6 +70,7 @@ public class GameMenuView : MonoBehaviour
                    .Subscribe(
                     delegate
                     {
+                        AudioManager.Instance.PlaySE(SEType.PressButton);
                         MenuDiactivation();
                         GameUIManager.Instance.SetIsActivateMenu(false);
                     })

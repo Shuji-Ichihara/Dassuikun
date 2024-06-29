@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
-public class SceneChange : MonoBehaviour
+public class SceneChange : SingletonMonoBehaviour<SceneChange>
 {
-    [SerializeField]List<string> SceneName = new List<string>();
+    [SerializeField] List<string> SceneName = new List<string>();
+    public List<string> SceneNames => SceneName;
+
     GameObject ManageObject;
     FadeScene fadeSceneManager;
     public bool Happyend;
     int ChangeClick;
+
+    private PlayerControler slime = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +31,10 @@ public class SceneChange : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != SceneName[1])
         {
-            if(Input.GetKeyDown(KeyCode.Space) && ChangeClick == 0)
+            //if (Input.anyKeyDown && ChangeClick == 0)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
+                AudioManager.Instance.PlaySE(SEType.PressButton);
                 ChangeClick++;
                 //SceneFadeManagerがアタッチされているオブジェクトを取得
                 ManageObject = GameObject.Find("SceneChangeObject");
@@ -38,7 +45,10 @@ public class SceneChange : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Q) && ChangeClick == 0)
+            if (slime == null)
+                slime = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControler>();
+            if (slime.gameMode == PlayerControler.SLIME_MODE.DEATH && ChangeClick == 0)
+            //if (slime.gameMode == PlayerControler.SLIME_MODE.DEATH )
             {
                 ChangeClick++;
                 SceneChanges();
@@ -56,7 +66,7 @@ public class SceneChange : MonoBehaviour
                 fadeSceneManager.fadeOutStart(0, 0, 0, 0, SceneName[3]);
                 Happyend = false;
             }
-            else if(Happyend == false)
+            else if (Happyend == false)
             {
                 //SceneFadeManagerの中のフェードアウト開始関数を呼び出し
                 fadeSceneManager.fadeOutStart(0, 0, 0, 0, SceneName[2]);

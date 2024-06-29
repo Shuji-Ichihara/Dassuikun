@@ -24,6 +24,9 @@ public class Water_Gauge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameUIManager.Instance.IsPauseMenu)
+            return;
+
         if (PlayerC.type == PlayerControler.SLIME_TYPE.NOMAL)
         {
             TimeGage.sprite = Gauge_Pictures[0];
@@ -53,12 +56,12 @@ public class Water_Gauge : MonoBehaviour
             time += Time.deltaTime;
             if (time > 1)
             {
-                if(WetherChange.currentWeather == WetherList.WeatherState.Sunny)
+                if (WetherChange.currentWeather == WetherList.WeatherState.Sunny)
                 {
                     Debug.Log("¬Œ÷2");
                     TimeGage.fillAmount -= 0.0668f;
                 }
-                else if(WetherChange.currentWeather == WetherList.WeatherState.Cloudy)
+                else if (WetherChange.currentWeather == WetherList.WeatherState.Cloudy)
                 {
                     Debug.Log("¬Œ÷1");
                     TimeGage.fillAmount -= 0.0334f;

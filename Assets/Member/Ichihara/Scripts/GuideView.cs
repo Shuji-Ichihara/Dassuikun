@@ -60,18 +60,26 @@ public class GuideView : MonoBehaviour
             _prevTutorialButton = GameObject.Find(_prevTutorialButtonName).GetComponent<Button>();
         #endregion
         gameObject.SetActive(false);
+        _guideImage.sprite = _tutorialPages[0].TutorialPageImage;
         // メニュー画面に戻る
         _returnButton.OnClickAsObservable()
-                     .ThrottleFirst(System.TimeSpan.FromMilliseconds(1000))
-                     .Subscribe(_ => gameObject.SetActive(false))
+                     .ThrottleFirst(System.TimeSpan.FromMilliseconds(200))
+                     .Subscribe(
+                     delegate
+                     {
+                         AudioManager.Instance.PlaySE(SEType.PressButton);
+                         gameObject.SetActive(false);
+                         _guideImage.sprite = _tutorialPages[0].TutorialPageImage;
+                     })
                      .AddTo(this);
         // Nextボタンを押したら、次のチュートリアル画面を表示する
         _nextTutorialButton.OnClickAsObservable()
                            .Where(_ => _tutorialCount < _tutorialPages.Count - 1)
-                           .ThrottleFirst(System.TimeSpan.FromMilliseconds(1000))
+                           .ThrottleFirst(System.TimeSpan.FromMilliseconds(200))
                            .Subscribe(
                             delegate
                             {
+                                AudioManager.Instance.PlaySE(SEType.PressButton);
                                 _tutorialCount++;
                                 _guideImage.sprite = _tutorialPages[_tutorialCount].TutorialPageImage;
                             })
@@ -79,10 +87,11 @@ public class GuideView : MonoBehaviour
         // Backボタンを押したら、次のチュートリアル画面を表示する
         _prevTutorialButton.OnClickAsObservable()
                            .Where(_ => _tutorialCount > 0)
-                           .ThrottleFirst(System.TimeSpan.FromMilliseconds(1000))
+                           .ThrottleFirst(System.TimeSpan.FromMilliseconds(200))
                            .Subscribe(
                             delegate
                             {
+                                AudioManager.Instance.PlaySE(SEType.PressButton);
                                 _tutorialCount--;
                                 _guideImage.sprite = _tutorialPages[_tutorialCount].TutorialPageImage;
 

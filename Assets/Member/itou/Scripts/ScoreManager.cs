@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -11,19 +11,22 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     SceneChange scenechange;
     [SerializeField]
-    private Text scoretext;
+    private TextMeshProUGUI scoretext;
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameUIManager.Instance.IsPauseMenu)
+            return;
+
         Score += Scoremagnification * Time.deltaTime;
         scoretext.text = "" + Score.ToString("0000");
-        if(Score >= EndScore) 
+        if (Score >= EndScore)
         {
             scenechange.Happyend = true;
         }

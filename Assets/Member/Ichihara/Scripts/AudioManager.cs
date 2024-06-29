@@ -8,7 +8,8 @@ public enum BGMType
 {
     TitleBGM,
     GameBGM,
-    ResultBGM,
+    ClearBGM,
+    GameOverBGM,
 }
 
 /// <summary>
@@ -16,12 +17,15 @@ public enum BGMType
 /// </summary>
 public enum SEType
 {
-    Gacha,
-    CountDown,
-    RollGachaBall,
-    CollideGachaBall,
-    CollideWall,
-    Oil,
+    Dassui_Run,
+    Dassui_Jump,
+    Dassui_Attack,
+    BreakObject_01,
+    BreakObject_02,
+    ChangeDassui,
+    PressButton,
+    Damage,
+
 }
 
 /// <summary>
